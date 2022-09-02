@@ -1,0 +1,28 @@
+server:
+  port: 5011
+
+spring:
+  application:
+    name: Dabbawala-Order
+  cloud:
+    discovery:
+      enabled: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    name: dabbawala
+    password: root
+    url: jdbc:postgresql://localhost:5432/dabbawala
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

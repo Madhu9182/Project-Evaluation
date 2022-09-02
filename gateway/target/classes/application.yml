@@ -1,0 +1,39 @@
+server:
+  port: 8021
+
+spring:
+  application:
+    name: API-Gateway
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: SignUp-Form
+          uri: http://localhost:5009/
+          predicates:
+            - Path=/api/**
+        - id: LOGIN
+          uri: http://localhost:5008/
+          predicates:
+            - Path=/ap/**
+        - id: Dabbawala-Order
+          uri: http://localhost:5011/
+          predicates:
+            - Path=/dabba/**
+        - id: Food-Order
+          uri: http://localhost:5010/
+          predicates:
+            - Path=/food/**
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
